@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/api/user")
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserRestController {
 
@@ -24,23 +24,16 @@ public class UserRestController {
         this.service = service;
     }
 
-    @GetMapping()
-    public ResponseEntity<User> buscarPorId(@RequestParam(name = "id") int id) {
-        var usuario = usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
-
-        return ResponseEntity.ok(usuario);
-    }
-
-    @GetMapping("/listar")
-    public ResponseEntity<List<User>> listar() {
+    @GetMapping("/list")
+    public ResponseEntity<List<User>> getAll() {
         List<User> user;
         user = usuarioRepository.findAll();
 
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping("/incluir")
-    public ResponseEntity<UserDto> incluir(@RequestBody(required = true) UserDto dto) {
+    @PostMapping("/insert")
+    public ResponseEntity<UserDto> insert(@RequestBody(required = true) UserDto dto) {
 
         service.insertUser(dto);
 
