@@ -1,14 +1,12 @@
 package com.br.calcme.controllers;
 
 import com.br.calcme.dtos.UserDto;
-import com.br.calcme.models.entities.User;
 import com.br.calcme.models.repositories.*;
 import com.br.calcme.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
