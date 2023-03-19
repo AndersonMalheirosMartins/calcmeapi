@@ -24,20 +24,12 @@ public class UserRestController {
         this.service = service;
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<User>> getAll() {
-        List<User> user;
-        user = usuarioRepository.findAll();
-
-        return ResponseEntity.ok(user);
-    }
-
     @PostMapping("/insert")
     public ResponseEntity<UserDto> insert(@RequestBody(required = true) UserDto dto) {
 
         service.insertUser(dto);
 
-        URI location = URI.create("/usuarios/" + dto.getId());
+        URI location = URI.create("/user/" + dto.getId());
 
         return ResponseEntity.created(location).body(dto);
     }

@@ -21,12 +21,10 @@ public class UserServiceImpl implements UserService {
 
     public void insertUser(UserDto dto){
 
-        User user = new User();
-
-        user.setId(sequenceGeneratorService.generateSequence(User.SEQUENCE_NAME));
-        user.setEmail(dto.getEmail());
-        user.setNome(dto.getNome());
-        user.setPhone(dto.getPhone());
+        var user = User.build(sequenceGeneratorService.generateSequence(User.SEQUENCE_NAME),
+                dto.getEmail(),
+                dto.getName(),
+                dto.getPhone());
 
         repository.save(user);
     }

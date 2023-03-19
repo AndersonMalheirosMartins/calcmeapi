@@ -16,7 +16,24 @@ public class User {
 
     @Id
     private long id;
-    private String nome;
+    private String name;
     private String email;
     private String phone;
+
+    private User(long id,
+                 String name,
+                 String email,
+                 String phone){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public static User build(long id,
+                      String name,
+                      String email,
+                      String phone){
+        return new User(id, name, email, phone);
+    }
 }

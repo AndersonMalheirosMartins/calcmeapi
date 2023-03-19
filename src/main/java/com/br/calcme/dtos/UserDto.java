@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class UserDto {
     private int id;
-    private String nome;
+    private String name;
     private String email;
     private String phone;
 }
