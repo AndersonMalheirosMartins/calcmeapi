@@ -23,12 +23,12 @@ public class UserRestController {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<UserDto> insert(@RequestBody(required = true) UserDto dto) {
+    public ResponseEntity<String> insert(@RequestBody(required = true) UserDto dto) {
 
         service.insertUser(dto);
 
         URI location = URI.create("/user/" + dto.getId());
 
-        return ResponseEntity.created(location).body(dto);
+        return ResponseEntity.ok().body("Dados gravados com sucesso.");
     }
 }
